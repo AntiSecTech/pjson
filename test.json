@@ -1,0 +1,14 @@
+{
+  "main-key": {
+    "keyword": "value",
+    "sub-key": {
+      "inner-sub-keyword": "value"
+    }
+  },
+  "next-key": {
+    "keyword": "another-value",
+    "inner-sub": {
+      "keyword": "nested values"
+    }
+  }
+}

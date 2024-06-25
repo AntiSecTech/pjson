@@ -1,0 +1,19 @@
+{
+  "Program": {
+	"name": "pjson",
+	"type": "parser",
+	"language": "C",
+	"architecture": "x86_64",
+	"system": "linux"
+	},
+	"Config": {
+		"scheme": "github-dark"
+		},
+  "Release": {
+    "Version": "1.0.0",
+    "Build": "240625-100d",
+    "Release": "devel",
+    "Author": "AntiSecTech",
+    "Contact": "contact.antisec@pm.me"
+  }
+}
