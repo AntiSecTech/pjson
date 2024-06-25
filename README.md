@@ -11,13 +11,11 @@ This README provides a comprehensive guide to the project, including its feature
   - [Features](#features)
   - [Updates](#updates)
   - [Dependencies](#dependencies)
-    - [Linux:](#linux)
   - [Prerequisites](#prerequisites)
-    - [Linux:](#linux-1)
   - [Installation](#installation)
-    - [Clone the repository:](#clone-the-repository)
-    - [Compile the program:](#compile-the-program)
-    - [Install the program:](#install-the-program)
+    - [Clone the repository](#clone-the-repository)
+    - [Compile the program](#compile-the-program)
+    - [Install the program](#install-the-program)
   - [Uninstallation](#uninstallation)
   - [Usage](#usage)
   - [Help](#help)
@@ -101,7 +99,7 @@ make compile
 ```sh
 sudo make install
 ```
-If you do not install the program and only compile the binary, you must **create a link for the configuration file** so that it can be read by the binary.
+If you do not install the program and only compile the binary, you must **create a link for the configuration file** [`pjson.json`](https://github.com/AntiSecTech/pjson/blob/main/pjson.json) so that it can be read by the binary.
 ```sh
 sudo ln -s -r pjson.json /etc
 ```
@@ -147,17 +145,17 @@ Here you will find a small overview of the files used and their locations.
 |Filename|Filetype|Project Path|Install Path|Description|
 |---|---|---|---|---|
 | pjson	| binary | ./pjson | /usr/local/bin | Executable binary |
-| pjson.c | plaintext | ./pjson | Source code |
+| pjson.c | plaintext | ./pjson | | Source code |
 | pjson.json | json | ./pjson | /etc | Configuration |
 
 ---
 
 ## Customize
-The program utilizes `pygmentize` to provide syntax highlighting for JSON files.
-By default, it uses the color scheme specified in the `pjson.json` file.
+The program utilizes [`pygmentize`](https://pygments.org/) to provide syntax highlighting for JSON files.
+By default, it uses the color scheme specified in the [`pjson.json`](https://github.com/AntiSecTech/pjson/blob/main/pjson.json) file.
 Users can customize the color scheme by modifying this configuration file.
 
-Open the `pjson.json` file located in the same directory as the program.
+Open the [`pjson.json`](https://github.com/AntiSecTech/pjson/blob/main/pjson.json) file located in the same directory as the program.
 Locate the **scheme** field under the **Config** section.
 Change its value to your desired Pygments color scheme.
 ```json
@@ -178,7 +176,7 @@ For example, you can change the color scheme to `monokai`:
 After editing the configuration file, the new color scheme will be applied automatically.
 
 ### Color Schemes
-`Pygments` offers a wide variety of color schemes. Some popular options include:
+[`Pygments`](https://pygments.org/) offers a wide variety of color schemes. Some popular options include:
  - monokai
  - autumn
  - github-dark
@@ -191,7 +189,7 @@ After editing the configuration file, the new color scheme will be applied autom
 ---
 
  ## Examples
- Given the following JSON file `test.json`:
+ Given the following JSON file [`test.json`](https://github.com/AntiSecTech/pjson/blob/main/test.json):
 ```json
 {
   "main-key": {
@@ -262,4 +260,4 @@ Output:
 ---
 
 ## License
-This project is licensed under the `MIT License`. See the [LICENSE](https://github.com/AntiSecTech/pjson/blob/main/LICENSE) file for more details.
+This project is licensed under the [`MIT License`](https://github.com/AntiSecTech/pjson/blob/main/LICENSE). See the [LICENSE](https://raw.githubusercontent.com/AntiSecTech/pjson/main/LICENSE) file for more details.
