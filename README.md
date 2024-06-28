@@ -33,6 +33,11 @@ This README provides a comprehensive guide to the project, including its feature
 It allows retrieval of values based on specific keys and is ideal for configuration management and automation scripts.
 Additionally, it supports syntax highlighting for JSON file contents.
 
+![GitHub Release](https://img.shields.io/github/v/release/AntiSecTech/pjson?display_name=release)
+![GitHub License](https://img.shields.io/github/license/AntiSecTech/pjson)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/AntiSecTech/pjson/total)
+
+
 ---
 
 ## Features
@@ -49,9 +54,13 @@ Additionally, it supports syntax highlighting for JSON file contents.
 
 ## Updates
 
-This release is currently in version: **Version 1.0.0**[devel].
+This release is currently in version: **1.0.0**
 Please refer to the `changelog` for all information on current changes.
+
 You can view it [here](https://github.com/AntiSecTech/pjson/blob/main/CHANGELOG.md).
+
+![GitHub Release](https://img.shields.io/github/v/release/AntiSecTech/pjson?display_name=release)
+![GitHub Tag](https://img.shields.io/github/v/tag/AntiSecTech/pjson)
 
 ---
 
@@ -138,6 +147,14 @@ The following options are available to help you use **pjson**.
 | pjson | -v | | | Show version number |
 | pjson | --version | | | Show detailed version information |
 
+
+**Manpage**
+
+To open the manual, use the following command:
+```sh
+   man pjson
+```
+
 ---
 
 ## Files
@@ -147,6 +164,7 @@ Here you will find a small overview of the files used and their locations.
 | pjson	| binary | ./pjson | /usr/local/bin | Executable binary |
 | pjson.c | plaintext | ./pjson | | Source code |
 | pjson.json | json | ./pjson | /etc | Configuration |
+| pjson.1 | troff | ./pjson | /usr/local/man/man1 | Manpage |
 
 ---
 
