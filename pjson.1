@@ -1,0 +1,80 @@
+.\" Manpage for pjson
+.TH PJSON 1 "June 2024" "Version 1.0.0" "User Commands"
+.SH NAME
+pjson \- a simple JSON parser
+.SH SYNOPSIS
+.B pjson
+.RI [ options ] " <file.json> [<key>]"
+.SH DESCRIPTION
+.B pjson
+is a lightweight and easy-to-use JSON parser written in C.
+
+.SH OPTIONS
+.TP
+.B \-h, \-\-help
+Show help message and exit.
+.TP
+.B \-v
+Show version number and exit.
+.TP
+.B \-\-version
+Show detailed version information and exit.
+
+.SH USAGE
+.TP
+.B pjson \fI<file.json>\fR
+Display the contents of the specified JSON file with syntax highlighting.
+.TP
+.B pjson \fI<file.json> <key>\fR
+Display the value associated with the specified key in the JSON file.
+
+.SH EXAMPLES
+.TP
+.B pjson config.json
+Displays the contents of "\fIconfig.json\fR" with syntax highlighting.
+.TP
+.B pjson config.json Config.scheme
+Displays the value of the "\fBscheme\fR" key within the "\fBConfig\fR" object in "\fIconfig.json\fR".
+
+.SH CONFIGURATION
+.B pjson
+reads its configuration from a JSON file located at
+.I /etc/pjson.json.
+This configuration file contains information about the program, such as version, build, and release details, as well as the color scheme for syntax highlighting.
+
+.SH CUSTOMIZE
+The program utilizes \fBpygmentize\fR to provide syntax highlighting for YAML files.
+By default, it uses the color scheme specified in the \fIpjson.json\fR file.
+However, users can customize the color scheme by modifying this configuration file.
+
+.SH COLOR SCHEMES
+\fBPygments\fR offers a variety of color schemes. Popular options include:
+
+.TP
+.I default
+.TP
+.I emacs
+.TP
+.I monokai
+
+.TP
+For a complete list of available styles, you can use the following command:
+.TP
+.BR pygmentize \ -L \ \fIstyles\fR
+
+.SH BUGS
+There are no known bugs in this program. If you find any bugs, please report them to the GitHub repository at <https://github.com/AntiSecTech/pjson/issues>.
+
+.SH COPYRIGHT
+\fBpjson\fR is licensed under the \fBMIT License\fR. See the \fILICENSE\fR file for more details.
+
+.SH AUTHOR
+.B pjson
+was developed by \fBAntiSecTech\fR. You can contact the author at <\fIcontact.antisec@pm.me\fR>.
+
+.SH SEE ALSO
+.BR jq (1),
+.BR jsonlint (1)
+
+.SH HISTORY
+Refer to the changelog at <https://github.com/AntiSecTech/pjson/blob/main/CHANGELOG.md> for detailed version history.

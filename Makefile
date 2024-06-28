@@ -1,49 +1,80 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -O2
-LDFLAGS = -ljansson
+# Makefile for pjson - version 1.0.0 - alpha[240628.100s]
+
+# File
 TARGET = pjson
-SRC = pjson.c
+SOURCE = pjson.c
 CONFIG = pjson.json
-PREFIX = /usr/local
-BINDIR = $(PREFIX)/bin
+MANPAGE = pjson.1
+
+# Library
+LIBS = -ljansson
+
+# Path
+BINDIR = /usr/local/bin
+MANDIR = /usr/local/man/man1
 CONFDIR = /etc
 
+
+# Rules
 all: compile
 
 compile: $(TARGET)
 
-$(TARGET): $(SRC)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRC) $(LDFLAGS)
+$(TARGET): $(SOURCE)
+	$(CC) -o $(TARGET) $(SOURCE) $(LIBS)
 
-install: $(TARGET) $(TARGET).1 $(CONFIG)
+install: $(TARGET) $(MANPAGE) $(CONFIG)
+	@install -d $(BINDIR)
+	@install -d $(MANDIR)
+	@install -d $(CONFDIR)
 	@if [ -e $(BINDIR)/$(TARGET) ]; then \
 		echo "$(TARGET) already exists in $(BINDIR). Installation aborted."; \
 	else \
-		ln -s -r $(TARGET) $(BINDIR); \
-		echo "$(TARGET) installed to $(BINDIR)/"; \
+		ln -s -r ./$(TARGET) $(BINDIR)/$(TARGET); \
+		echo "Installed $(TARGET) to $(BINDIR)"; \
+	fi
+	@if [ -e $(MANDIR)/$(MANPAGE) ]; then \
+		echo "$(MANPAGE) already exists in $(MANDIR). Installation aborted."; \
+	else \
+		ln -s -r ./$(MANPAGE) $(MANDIR)/$(MANPAGE); \
+		echo "Installed $(MANPAGE) to $(MANDIR)"; \
+		mandb; \
 	fi
 	@if [ -e $(CONFDIR)/$(CONFIG) ]; then \
-		echo "$(CONFIG) already exist in $(CONFDIR). Installation aborted."; \
+		echo "$(CONFIG) already exists in $(CONFDIR). Installation aborted."; \
 	else \
-		ln -s -r $(CONFIG) $(CONFDIR); \
-		echo "$(CONFIG) installed to $(CONFDIR)/"; \
+		ln -s -r ./$(CONFIG) $(CONFDIR)/$(CONFIG); \
+		echo "Installed $(CONFIG) to $(CONFDIR)"; \
 	fi
+	@chmod 644 $(MANDIR)/$(MANPAGE)
+	@chmod 755 $(BINDIR)/$(TARGET)
+	@chmod 644 $(CONFDIR)/$(CONFIG)
 
 uninstall:
-	@if [ ! -e $(BINDIR)/$(TARGET) ]; then \
-		echo "$(TARGET) does not exist in $(BINDIR). Nothing to uninstall."; \
-	else \
+	@if [ -L $(BINDIR)/$(TARGET) ]; then \
 		rm $(BINDIR)/$(TARGET); \
-		echo "$(TARGET) removed from $(BINDIR)/"; \
-	fi
-	@if [ ! -e $(CONFDIR)/$(CONFIG) ]; then \
-		echo "$(CONFIG) does not exist in $(CONFDIR). Nothing to uninstall."; \
+		echo "Removed $(TARGET) from $(BINDIR)"; \
 	else \
-		rm $(CONFDIR)/$(CONFIG); \
-		echo "$(CONFIG) removed from $(CONFDIR)/"; \
+		echo "$(TARGET) not found in $(BINDIR). Uninstallation aborted."; \
 	fi
+	@if [ -L $(MANDIR)/$(MANPAGE) ]; then \
+		rm $(MANDIR)/$(MANPAGE); \
+		echo "Removed $(MANPAGE) from $(MANDIR)"; \
+	else \
+		echo "$(MANPAGE) not found in $(MANDIR). Uninstallation aborted."; \
+	fi
+	@if [ -L $(CONFDIR)/$(CONFIG) ]; then \
+		rm $(CONFDIR)/$(CONFIG); \
+		echo "Removed $(CONFIG) from $(CONFDIR)"; \
+	else \
+		echo "$(CONFIG) not found in $(CONFDIR). Uninstallation aborted."; \
+	fi
+	@mandb
 
 clean:
 	rm -f $(TARGET)
+	@if [ -e $(TARGET).o ]; then\
+		rm -r $(TARGET).o; \
+	fi
 
 .PHONY: all compile install uninstall clean

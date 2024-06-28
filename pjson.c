@@ -1,3 +1,9 @@
+// pjson version 1.0.0 - alpha
+// (c)2024 written by AntiSecTech <contact.antisec@pm.me>
+
+// This program has been released under the MIT license
+
+// headers & librarys
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,11 +12,11 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+// need symlink for config
 #define CONFIG_FILE "/etc/pjson.json"
 
-// pjson version 1.0.0 - devel
-// wtitten by AntiSecTech <contact.antisec@pm.me>
 
+// pjson --help
 void print_usage() {
     printf("Usage: pjson <file.json> [<key>]\n");
 }
@@ -27,6 +33,7 @@ void print_help() {
     printf("  --version        Show detailed version information\n");
 }
 
+// functions
 void print_value(json_t *root, const char *key) {
     json_t *value = root;
     char *token = strtok(strdup(key), ".");
@@ -102,6 +109,8 @@ void print_detailed_version() {
     json_decref(root);
 }
 
+// run it
+// precessing options
 int main(int argc, char *argv[]) {
     if (argc < 2) {
         print_usage();
@@ -123,6 +132,8 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
+
+// parsing file
     const char *filename = argv[1];
     const char *key = argc > 2 ? argv[2] : NULL;
 
@@ -139,6 +150,8 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+
+	// read config for pygmentize
     json_t *config = json_object_get(root, "Config");
     const char *scheme = "monokai";
     if (json_is_object(config)) {
@@ -147,6 +160,7 @@ int main(int argc, char *argv[]) {
             scheme = json_string_value(scheme_json);
         }
     }
+    // ---
 
     if (key) {
         json_t *json_root = json_load_file(filename, 0, &error);

@@ -11,8 +11,8 @@
 		},
   "Release": {
     "Version": "1.0.0",
-    "Build": "240625-100d",
-    "Release": "devel",
+    "Build": "240628-100s",
+    "Release": "alpha",
     "Author": "AntiSecTech",
     "Contact": "contact.antisec@pm.me"
   }
