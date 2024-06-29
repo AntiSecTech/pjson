@@ -89,7 +89,7 @@ To compile the C program, you need to have the `GCC` compiler installed on your 
 sudo apt-get update
 sudo apt-get install gcc   # for Debian/Ubuntu
 sudo dnf install gcc       # for Fedora
-sudo pacman -S gcc          # for Arch Linux
+sudo pacman -S gcc         # for Arch Linux
 ```
 
 ---
