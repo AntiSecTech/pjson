@@ -108,7 +108,7 @@ make compile
 ```sh
 sudo make install
 ```
-If you do not install the program and only compile the binary, you must **create a link for the configuration file** [`pjson.json`](https://github.com/AntiSecTech/pjson/blob/main/pjson.json) so that it can be read by the binary.
+If you do not install the program and only compile the shared library, you must **create a link for the configuration file** [`pjson.json`](https://github.com/AntiSecTech/pjson/blob/main/pjson.json) so that it can be read by the binary.
 ```sh
 sudo ln -s -r pjson.json /etc
 ```
@@ -161,7 +161,7 @@ To open the manual, use the following command:
 Here you will find a small overview of the files used and their locations.
 |Filename|Filetype|Project Path|Install Path|Description|
 |---|---|---|---|---|
-| pjson	| binary | ./pjson | /usr/local/bin | Executable binary |
+| pjson	| shared library | ./pjson | /usr/local/bin | Executable file |
 | pjson.c | plaintext | ./pjson | | Source code |
 | pjson.json | json | ./pjson | /etc | Configuration |
 | pjson.1 | troff | ./pjson | /usr/local/man/man1 | Manpage |
